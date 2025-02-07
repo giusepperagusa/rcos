@@ -1,12 +1,12 @@
-# CentOS CoreOS (CCOS)
+# Rocky CoreOS (RCOS)
 
 
-CentOS Stream-based bootc image with packages and overlays from CoreOS preinstalled.
+Rocky-based bootc image with packages and overlays from CoreOS preinstalled.
 
 How this is expected to be consumed:
 
 ```Containerfile
-FROM ghcr.io/ublue-os/ccos:stream9 # (or whatever tag you want)
+FROM ghcr.io/ublue-os/rcos:9.5-2025020801 # (or whatever tag you want)
 RUN dnf -y install htop fastfetch
 
 $your_hopes_and_dreams_go_here.
@@ -18,10 +18,10 @@ RUN bootc container lint
 
 This is expected to be:
 
-- a CentOS based alternative to Fedora CoreOS (FCOS)
-- ***only*** make the minimal changes required to create a CentOS bootc image which closely matches Fedora CoreOS
-- the foundation for a CentOS based [uCore](https://projectucore.io)
-- initially not focussed on installation since FCOS ignition install can be done and rebased to CCOS
+- a Rocky based alternative to Fedora CoreOS (FCOS)
+- ***only*** make the minimal changes required to create a Rocky bootc image which closely matches Fedora CoreOS
+- the foundation for a Rocky based [uCore](https://projectucore.io)
+- initially not focussed on installation since FCOS ignition install can be done and rebased to RCOS
 
 
 ## Goals
