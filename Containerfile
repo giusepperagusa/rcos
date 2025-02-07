@@ -1,6 +1,6 @@
-ARG MAJOR_VERSION="${MAJOR_VERSION:-stream9}"
+ARG MAJOR_VERSION="${MAJOR_VERSION:-r9}"
 
-FROM quay.io/centos-bootc/centos-bootc:$MAJOR_VERSION
+FROM ghcr.io/charles8191/rocky-bootc:$MAJOR_VERSION
 
 # Install/remove packages to make an image with resembles Fedora CoreOS
 COPY build.sh /tmp/build.sh
