@@ -68,6 +68,7 @@ jobs:
           registry: ${{ env.REGISTRY }}/${{ github.repository_owner }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+          auth_file_path: /run/containers/0/auth.json
 
       # Build container image with buildah except on PR
       # https://github.com/redhat-actions/buildah-build
