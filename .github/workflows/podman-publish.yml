@@ -30,6 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: rockylinux/rockylinux:9
+      options: --privileged
     permissions:
       contents: read
       packages: write
