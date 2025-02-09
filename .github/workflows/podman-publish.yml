@@ -41,7 +41,7 @@ jobs:
       - name: Setup Rocky container with all dependencies
         run: |
           cat /etc/os-release
-          dnf -y install git podman buildah
+          dnf -y install which git podman buildah
           which git podman buildah
 
       - name: Checkout repository
