@@ -47,6 +47,8 @@ jobs:
           echo "/usr/bin" >> $GITHUB_PATH
           echo "/usr/local/sbin" >> $GITHUB_PATH
           echo "/usr/local/bin" >> $GITHUB_PATH
+          mkdir -p $HOME/.docker
+          echo "{ \"auths\": {} }" > $HOME/.docker/config.json
 
       - name: Checkout repository
         uses: actions/checkout@v4
