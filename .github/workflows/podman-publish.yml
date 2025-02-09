@@ -43,6 +43,8 @@ jobs:
           cat /etc/os-release
           dnf -y install which git podman buildah
           which git podman buildah
+          mkdir -p $HOME/.docker
+          touch $HOME/.docker/config.json
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -55,12 +57,14 @@ jobs:
         with:
           cosign-release: 'v2.2.4'
 
+      - name: Check container with all dependencies
+        run: |
+          which git podman buildah
+
       # Login against a Docker registry except on PR
       # https://github.com/redhat-actions/podman-login
       - name: Log into registry ${{ env.REGISTRY }}
         if: github.event_name != 'pull_request'
-        env:
-          PATH: /usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
         uses: redhat-actions/podman-login@v1
         with:
           registry: ${{ env.REGISTRY }}/${{ github.repository_owner }}
