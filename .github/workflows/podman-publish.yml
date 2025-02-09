@@ -1,4 +1,4 @@
-name: Docker
+name: Podman
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -59,6 +59,8 @@ jobs:
       # https://github.com/redhat-actions/podman-login
       - name: Log into registry ${{ env.REGISTRY }}
         if: github.event_name != 'pull_request'
+        env:
+          PATH: /usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
         uses: redhat-actions/podman-login@v1
         with:
           registry: ${{ env.REGISTRY }}/${{ github.repository_owner }}
