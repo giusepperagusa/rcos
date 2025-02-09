@@ -38,13 +38,17 @@ jobs:
       id-token: write
 
     steps:
-      - name: Setup Rocky container with all dependencies
+      - name: Setup Rocky container with all dependencies and settings
         run: |
           cat /etc/os-release
           dnf -y install which git podman buildah
           which git podman buildah
           mkdir -p $HOME/.docker
           touch $HOME/.docker/config.json
+          echo "/usr/sbin" >> $GITHUB_PATH
+          echo "/usr/bin" >> $GITHUB_PATH
+          echo "/usr/local/sbin" >> $GITHUB_PATH
+          echo "/usr/local/bin" >> $GITHUB_PATH
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -56,10 +60,6 @@ jobs:
         uses: sigstore/cosign-installer@59acb6260d9c0ba8f4a2f9d9b48431a222b68e20 #v3.5.0
         with:
           cosign-release: 'v2.2.4'
-
-      - name: Check container with all dependencies
-        run: |
-          which git podman buildah
 
       # Login against a Docker registry except on PR
       # https://github.com/redhat-actions/podman-login
