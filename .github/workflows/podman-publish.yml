@@ -9,17 +9,17 @@ on:
   #schedule:
   #  - cron: '43 10 * * *'
   push:
-    branches: [ "switch-to-rocky" ]
+    branches: [ "rocky-with-cockpit" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
-    branches: [ "switch-to-rocky" ]
+    branches: [ "rocky-with-cockpit" ]
 
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository }}-cockpit
   # TODO: find a way to dinamically extract/derive tags
   TAG: latest
 
